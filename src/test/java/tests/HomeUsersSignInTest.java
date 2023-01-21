@@ -3,6 +3,8 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.TestData;
+import pages.home.HomePage;
 import pages.home.HomeUsersSignInPage;
 
 public class HomeUsersSignInTest extends BaseTest {
@@ -41,6 +43,7 @@ public class HomeUsersSignInTest extends BaseTest {
         Assert.assertEquals(actualSignInMenuText, oldSignInMenuText);
         Assert.assertEquals(actualSignInMenuText, expectedSignInMenuText);
     }
+
     @Test
     public void testLogInWithPasswordIsCaseSensitive() {
         final String expectedNoticeMessage = "Invalid Email or password.";
@@ -65,4 +68,27 @@ public class HomeUsersSignInTest extends BaseTest {
         Assert.assertEquals(actualSignInMenuText, oldSignInMenuText);
         Assert.assertEquals(actualSignInMenuText, expectedSignInMenuText);
     }
+
+    @Test(dataProvider = "SignInCredentials", dataProviderClass = TestData.class)
+    public void testSignInWithInvalidCredentials(String scenario, String userEmail, String userPassword, String expectedNoticeMessage, String expectedSignInMenuText) {
+
+        final String oldSignInMenuText = openBaseURL()
+                .clickSignInMenu()
+                .getSignInText();
+
+        HomeUsersSignInPage homeUsersSignInPage = new HomeUsersSignInPage(getDriver());
+
+        homeUsersSignInPage
+                .clickClearInputRegularUserEmail(userEmail)
+                .clickClearInputRegularUserPassword(userPassword)
+                .clickSubmitButton();
+
+        String actualNoticeMessage = homeUsersSignInPage.getNotification();
+        String actualSignInMenuText = homeUsersSignInPage.getSignInText();
+
+        Assert.assertEquals(actualNoticeMessage, expectedNoticeMessage);
+        Assert.assertEquals(actualSignInMenuText, oldSignInMenuText);
+        Assert.assertEquals(actualSignInMenuText, expectedSignInMenuText);
+    }
 }
+

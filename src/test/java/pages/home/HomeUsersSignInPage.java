@@ -83,7 +83,7 @@ public class HomeUsersSignInPage extends FooterMenuPage<HomeUsersSignInPage> {
     }
 
     public void clickSubmitButton() {
-        click(submitButton);
+        click20(submitButton);
     }
 
     public void signInAsRegularUser() {

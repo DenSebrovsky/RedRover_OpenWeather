@@ -66,4 +66,20 @@ public class TestData {
                 {17, "OpenWeather for Business", "https://openweather.co.uk/", "https://openweather.co.uk/", "OpenWeather for business - OpenWeatherMap"},
         };
     }
+
+    @DataProvider(name = "SignInCredentials")
+    public static Object[][] signInWithInvalidCredentialsTestDataProvider() {
+
+        return new Object[][] {
+                {"bothWrong", "jka59435@xcoxc.com", "Tester11#", "Invalid Email or password.", "Sign In"},
+                {"invalidEmail", "jka59435@xcoxc.com", "Tester12#", "Invalid Email or password.", "Sign In"},
+                {"invalidPassword", "jka59433@xcoxc.com", "Tester11#", "Invalid Email or password.", "Sign In"},
+                {"bothEmpty", "", "", "Invalid Email or password.", "Sign In"},
+                {"emptyEmail", "", "Tester12#", "Invalid Email or password.", "Sign In"},
+                {"emptyPassword", "jka59433@xcoxc.com", "", "Invalid Email or password.", "Sign In"},
+                {"passwordCaseSensitive", "jka59433@xcoxc.com", "tester12#", "Invalid Email or password.", "Sign In"},
+                {"passwordLeadingSpace", "jka59433@xcoxc.com", " Tester12#", "Invalid Email or password.", "Sign In"},
+                {"passwordTrailingSpace", "jka59433@xcoxc.com", "Tester12# ", "Invalid Email or password.", "Sign In"}
+        };
+    }
 }
