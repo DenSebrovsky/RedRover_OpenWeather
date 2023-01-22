@@ -1,6 +1,8 @@
 package tests;
 
 import base.BaseTest;
+import base.BaseUtils;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
@@ -98,5 +100,26 @@ public class HomeTest extends BaseTest {
         Assert.assertNotEquals(actualURL, oldURL);
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testLogInRememberMeTokenSaveInCookie() {
+        final String userEmail = "jKA59433@xcOxc.com";
+
+        openBaseURL()
+                .clickSignInMenu();
+        Cookie remember_user_token_old = getDriver().manage().getCookieNamed("remember_user_token");
+        Assert.assertTrue(remember_user_token_old==null);
+
+        new HomeUsersSignInPage(getDriver())
+                .clickClearInputRegularUserEmail(userEmail)
+                .clickClearInputRegularUserPassword()
+                .checkRemeberMeCheckBox()
+                .clickSubmitButton();
+
+        Cookie remember_user_token_new = getDriver().manage().getCookieNamed("remember_user_token");
+
+        Assert.assertTrue(remember_user_token_new!=null);
+        Assert.assertFalse(remember_user_token_new.getValue().isEmpty());
     }
 }

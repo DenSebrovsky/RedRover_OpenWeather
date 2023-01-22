@@ -24,6 +24,10 @@ public class HomeUsersSignInPage extends FooterMenuPage<HomeUsersSignInPage> {
     @FindBy(xpath = "//div[@id='desktop-menu']//li[@class='user-li']/a")
     private WebElement signInTopMenu;
 
+    @FindBy(id = "user_remember_me")
+    private WebElement rememberMe;
+
+
     public HomeUsersSignInPage(WebDriver driver) {
         super(driver);
     }
@@ -98,5 +102,11 @@ public class HomeUsersSignInPage extends FooterMenuPage<HomeUsersSignInPage> {
         click(createAccountLink);
 
         return new HomeUsersSignUpPage(getDriver());
+    }
+
+    public HomeUsersSignInPage checkRemeberMeCheckBox() {
+        if (!rememberMe.isSelected())
+            click(rememberMe);
+        return this;
     }
 }
