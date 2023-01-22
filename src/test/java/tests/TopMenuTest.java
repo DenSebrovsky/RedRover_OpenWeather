@@ -310,6 +310,28 @@ public class TopMenuTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Test(dataProvider = "ExternalTopMenuTestData", dataProviderClass = TestData.class)
+    public void testExternalTopMenuNavigatesToCorrespondingPage(
+            int index, String menuName, String href, String expectedURL, String expectedTitle) {
+
+        MainPage mainPage = openBaseURL();
+
+        String oldURL = mainPage.getCurrentURL();
+        String oldTitle = mainPage.getTitle();
+
+        mainPage.clickTopMenuExternalLink(index);
+
+        String actualURL = getExternalPageURL();
+        String actualTitle = getExternalPageTitle();
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+            Assert.assertEquals(actualURL, expectedURL);
+            Assert.assertEquals(actualTitle, expectedTitle);
+        }
+    }
+
     @Test
     public void testHamburgerMenuIsAvailableAndHasOptions_TopMenu() {
         final int expectedNumberOfOptionsHamburgerMenu = 12;

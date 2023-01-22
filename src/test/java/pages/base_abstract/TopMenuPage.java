@@ -12,17 +12,21 @@ import pages.home.HomeMarketplacePage;
 import pages.home.HomePage;
 import pages.home.HomeUsersSignInPage;
 import pages.top_menu.*;
+import utils.TestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TopMenuPage extends BasePage {
+public abstract class TopMenuPage<Generic> extends BasePage {
 
     private static final String TOP_MENU_ID = "//div[@id='desktop-menu']";
     private static final String SUPPORT_DROPDOWN_ID = "//ul[@id='support-dropdown-menu']";
 
     @FindBy(xpath = "//li[@class='logo']/a")
     private WebElement logo;
+
+    @FindBy(xpath = TOP_MENU_ID + "//a")
+    private List<WebElement> topMenuLinks;
 
     @FindBy(xpath = TOP_MENU_ID + "//form[@role='search']")
     private WebElement searchBoxTopMenu;
@@ -91,6 +95,8 @@ public abstract class TopMenuPage extends BasePage {
         super(driver);
     }
 
+    public abstract Generic createGeneric();
+
     public int topMenuLinkAmount() {
 
         return getListSize(topMenus);
@@ -127,15 +133,33 @@ public abstract class TopMenuPage extends BasePage {
         return getAttribute(supportTopMenuDropdown, "class");
     }
 
-    public void clickTopMenu(int index) {
+    public List<WebElement> getTopMenuLinks() {
+
+        return topMenuLinks;
+    }
+
+    public Generic clickTopMenu(int index) {
         List<WebElement> menus = new ArrayList<>();
         menus.add(logo);
-        menus.addAll(topMenus);
+        menus.addAll(topMenuLinks);
 
-        click(menus.get(index));
-
+        if (menus.get(index).isDisplayed()) {
+            click(menus.get(index));
+        } else {
+            clickSupportMenu().click(menus.get(index));
+        }
         if (getDriver().getWindowHandles().size() > 1) {
             switchToAnotherWindow();
+        }
+
+        return createGeneric();
+    }
+
+    public void clickTopMenuExternalLink (int index) {
+        click(getTopMenuLinks().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+            TestUtils.waitForPageLoaded(getDriver());
         }
     }
 

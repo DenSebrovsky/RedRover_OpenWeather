@@ -9,7 +9,7 @@ import pages.base_abstract.TopMenuPage;
 
 import java.util.List;
 
-public class WeatherMapsPage extends TopMenuPage {
+public class WeatherMapsPage extends TopMenuPage<WeatherMapsPage> {
 
     @FindBy(xpath = "//a[@class='leaflet-control-zoom-in']")
     private WebElement zoomInLoupe;
@@ -34,6 +34,12 @@ public class WeatherMapsPage extends TopMenuPage {
 
     public WeatherMapsPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public WeatherMapsPage createGeneric() {
+
+        return new WeatherMapsPage(getDriver());
     }
 
     public String getZoomOutText() {
