@@ -32,6 +32,10 @@ public class AboutUsPage extends FooterMenuPage<AboutUsPage> {
         return getTexts(optionsUnderWhereTo);
     }
 
+    public String getTextH1Header(){
+        return getText(aboutUsPageHeader);
+    }
+
     public AboutUsPage scrollToWhereTo() {
         scrollByVisibleElement(whereToH2Header);
 
