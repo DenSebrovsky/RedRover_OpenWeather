@@ -413,4 +413,27 @@ public class FooterMenuTest extends BaseTest {
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
+    @Test
+    public void testFAQFooterLinkNavigateToFAQPage(){
+        final String expectedURL = "https://openweathermap.org/faq";
+        final String expectedTitle = "Frequently Asked Questions - OpenWeatherMap";
+
+        MainPage mainPage = openBaseURL();
+
+        final String oldURL = mainPage.getCurrentURL();
+        final String oldTitle = mainPage.getTitle();
+
+        String actualURL = mainPage.scrollToFooterMenu()
+                .clickFAQFooterMenu()
+                .getCurrentURL();
+
+        String actualTitle = getDriver().getTitle();
+
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldTitle, actualTitle);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
 }

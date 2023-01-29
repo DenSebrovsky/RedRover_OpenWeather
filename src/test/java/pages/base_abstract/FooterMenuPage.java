@@ -10,6 +10,7 @@ import pages.footer_menu.AboutUsPage;
 import pages.footer_menu.TechnologyPage;
 import pages.footer_menu.WidgetsPage;
 import pages.home.HomeAskQuestionPage;
+import pages.top_menu.FAQPage;
 import pages.top_menu.PricePage;
 import pages.top_menu.WeatherDashboardPage;
 
@@ -91,6 +92,9 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     @FindBy(xpath = FOOTER_MENU_ID + "//ul/li/a")
     private List<WebElement> innerFooterMenuLink;
+
+    @FindBy(xpath = FOOTER_MENU_ID + "//a[@href = '/faq']")
+    private WebElement faqFooterMenu;
 
     public FooterMenuPage(WebDriver driver) {
         super(driver);
@@ -236,4 +240,11 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
         return isElementDisplayed(socialPanelFooterMenu);
     }
+
+    public FAQPage clickFAQFooterMenu() {
+        click20(faqFooterMenu);
+
+        return new FAQPage(getDriver());
+    }
+
 }
