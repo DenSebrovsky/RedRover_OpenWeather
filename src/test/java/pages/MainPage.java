@@ -637,4 +637,11 @@ public class MainPage extends FooterMenuPage<MainPage> {
 
         return humidity.substring(10, humidity.length() - 1);
     }
+
+    public MainPage scrollToProductCollectionsFooterMenu(){
+
+        scrollByVisibleElement(getProductCollectionsFooterMenu());
+        return this;
+    }
+
 }

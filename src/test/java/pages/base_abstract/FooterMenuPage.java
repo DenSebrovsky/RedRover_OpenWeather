@@ -93,6 +93,12 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     @FindBy(xpath = FOOTER_MENU_ID + "//ul/li/a")
     private List<WebElement> innerFooterMenuLink;
 
+    @FindBy(xpath = FOOTER_MENU_ID + "//p[text()='Product Collections']")
+    private WebElement productCollections;
+
+    @FindBy(xpath = FOOTER_MENU_ID + "//p[text()='Product Collections']//parent::div/div/ul/li")
+    private List<WebElement> productCollectionsList;
+
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@href = '/faq']")
     private WebElement faqFooterMenu;
 
@@ -239,6 +245,16 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
     public boolean isSocialPanelDisplayed() {
 
         return isElementDisplayed(socialPanelFooterMenu);
+    }
+
+    public WebElement getProductCollectionsFooterMenu() {
+
+        return productCollections;
+    }
+
+    public List<String> getProductCollectionsFooterMenuText() {
+
+        return getTexts(productCollectionsList);
     }
 
     public FAQPage clickFAQFooterMenu() {

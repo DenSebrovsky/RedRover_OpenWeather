@@ -415,6 +415,24 @@ public class FooterMenuTest extends BaseTest {
     }
 
     @Test
+    public void testProductCollectionsText(){
+        List<String> expectedProductCollectionsText = List.of(
+             "Current and Forecast APIs",
+                "Historical Weather Data",
+                "Weather Maps",
+                "Weather Dashboard",
+                "Widgets"
+        );
+
+        List actualProductCollectionsText = openBaseURL()
+                .scrollToProductCollectionsFooterMenu()
+                .getProductCollectionsFooterMenuText();
+
+        Assert.assertTrue(actualProductCollectionsText.size() > 0);
+        Assert.assertEquals(actualProductCollectionsText, expectedProductCollectionsText);
+    }
+
+    @Test
     public void testFAQFooterLinkNavigateToFAQPage(){
         final String expectedURL = "https://openweathermap.org/faq";
         final String expectedTitle = "Frequently Asked Questions - OpenWeatherMap";
