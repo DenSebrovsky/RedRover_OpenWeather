@@ -33,6 +33,12 @@ jobs:
         env:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
           CI_RUN: true
+
+      - name: Attach screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          path: screenshots
           
       - name: Create test report
         uses: dorny/test-reporter@v1
