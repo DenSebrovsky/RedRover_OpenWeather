@@ -34,6 +34,9 @@ public class ProjectConstants {
     public static final String LAST_NAME = "User";
     public static final String PHONE_NUMBER = "1234567890";
     public static final String EMAIL = "test@example.com";
+    public static final String GMAIL_EMAIL = "qa.open.weather@gmail.com";   //!!! Укажите/создайте ваш ТЕСТОВЫЙ Gmail !!!
+    public static final String USER_GMAIL_PASSWORD = "Tester12#";   //!!! Укажите пароль к вашему ТЕСТОВОМУ Gmail !!!
+    public static final String NEW_USER_PASSWORD = "Tester123";
     public static final String SUBJECT = "Other";
     public static final String MESSAGE_TEXT = "Message";
 

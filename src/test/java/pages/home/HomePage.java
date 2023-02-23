@@ -30,6 +30,15 @@ public class HomePage extends BaseHomePage {
     @FindBy(xpath = "//ul[@class='nav nav-tabs pull-left']//a")
     private List<WebElement> navTabs;
 
+    @FindBy(id = "password_form_password")
+    private WebElement passwordMyProfileField;
+
+    @FindBy(id = "password_form_password_confirmation")
+    private WebElement confirmPasswordMyProfileField;
+
+    @FindBy(xpath = "//input[@value='Change Password']")
+    private WebElement changePasswordButton;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -80,4 +89,23 @@ public class HomePage extends BaseHomePage {
 
         wait10ElementToBeClickable(button);
     }
+
+    public HomePage clickClearInputPasswordMyProfile() {
+        inputAfterClear(passwordMyProfileField, "Tester12#");
+
+        return this;
+    }
+
+    public HomePage clickClearInputConfirmPasswordMyProfile() {
+        inputAfterClear(confirmPasswordMyProfileField, "Tester12#");
+
+        return this;
+    }
+
+    public HomePage clickChangePasswordButton() {
+        click(changePasswordButton);
+
+        return this;
+    }
 }
+

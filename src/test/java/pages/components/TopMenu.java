@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.FindPage;
 import pages.OurInitiativesPage;
 import pages.base_abstract.BaseTopMenu;
+import pages.home.HomePage;
 import pages.top_menu.*;
 import utils.TestUtils;
 
@@ -161,5 +162,11 @@ public class TopMenu extends BaseTopMenu {
         click(supportTopMenu);
 
         return this;
+    }
+
+    public HomePage signInGmailUserNewPassword() {
+        clickSignInMenu().signInAsGmailUserNewPassword();
+
+        return new HomePage(getDriver());
     }
 }

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.BaseComponents;
+import pages.home.HomePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,9 @@ public class UserTopMenu extends BaseComponents {
 
     @FindBy(xpath = "//ul[@id='myTab']/li")
     private List<WebElement> navTabLinks;
+
+    @FindBy(xpath = "//ul[@id='myTab']//a[@href='/home']")
+    private WebElement myProfileNavTabLink;
 
     public UserTopMenu(WebDriver driver) {
         super(driver);
@@ -37,4 +41,12 @@ public class UserTopMenu extends BaseComponents {
 
         return urlList;
     }
+
+    public HomePage clickMyProfileNavTabLink() {
+        click(myProfileNavTabLink);
+
+        return new HomePage(getDriver());
+    }
+
+
 }

@@ -1,9 +1,12 @@
 package pages.home;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.base_abstract.BaseMainPage;
+import utils.ProjectConstants;
 
 public class HomeUsersSignInPage extends BaseMainPage {
 
@@ -23,9 +26,14 @@ public class HomeUsersSignInPage extends BaseMainPage {
     private WebElement h3Header;
     @FindBy(xpath = "//div[@id='desktop-menu']//li[@class='user-li']/a")
     private WebElement signInTopMenu;
-
     @FindBy(id = "user_remember_me")
     private WebElement rememberMe;
+    @FindBy(xpath = "//div[@class='form-group email optional user_email']/input")
+    private WebElement resetPasswordEmail;
+    @FindBy(xpath = "//input[@type='submit'][@value='Send']")
+    private WebElement sendButton;
+    @FindBy(name = "commit")
+    private WebElement changePasswordButton;
 
 
     public HomeUsersSignInPage(WebDriver driver) {
@@ -104,9 +112,66 @@ public class HomeUsersSignInPage extends BaseMainPage {
         return new HomeUsersSignUpPage(getDriver());
     }
 
-    public HomeUsersSignInPage checkRemeberMeCheckBox() {
+    public HomeUsersSignInPage checkRememberMeCheckBox() {
         if (!rememberMe.isSelected())
             click(rememberMe);
         return this;
+    }
+
+    public HomeUsersSignInPage clickRecoverLink() {
+        click(clickHereToRecoverLink);
+        getWait20().until(ExpectedConditions.visibilityOf(resetPasswordEmail));
+
+        return this;
+    }
+
+    public HomeUsersSignInPage inputRecoverPasswordEmail() {
+        input(ProjectConstants.GMAIL_EMAIL, resetPasswordEmail);
+        getWait20().until(ExpectedConditions.elementToBeClickable(sendButton));
+
+        return this;
+    }
+
+    public HomeUsersSignInPage clickSendButton() {
+        click(sendButton);
+        return this;
+    }
+
+    public HomeUsersSignInPage clickClearRecoverPasswordEmail() {
+        click(resetPasswordEmail);
+        clear(resetPasswordEmail);
+
+        return this;
+    }
+
+    public HomeUsersSignInPage clickClearInputGmailUserEmail() {
+        click(userEmail);
+        userEmail.clear();
+        String email = ProjectConstants.GMAIL_EMAIL;
+        input(email, userEmail);
+
+        return this;
+    }
+
+    public HomeUsersSignInPage clickClearInputGmailUserNewPassword() {
+        click(userPassword);
+        userPassword.clear();
+        String password = ProjectConstants.NEW_USER_PASSWORD;
+        input(password, userPassword);
+
+        return this;
+    }
+
+    public String getAlertMessage() {
+        WebElement alert = getDriver().findElement(By.xpath("//div[@class='panel-body']"));
+        getWait20().until(ExpectedConditions.visibilityOf(alert));
+        return getText(alert);
+    }
+
+    public void signInAsGmailUserNewPassword() {
+        clickClearInputGmailUserEmail();
+        clickClearInputGmailUserNewPassword();
+        clickSubmitButton();
+        new HomePage(getDriver());
     }
 }

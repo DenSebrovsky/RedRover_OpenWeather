@@ -1,11 +1,9 @@
 package tests;
 
 import base.BaseTest;
-import base.BaseUtils;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.home.HomePage;
 import pages.home.HomeUsersSignInPage;
@@ -119,7 +117,7 @@ public class HomeTest extends BaseTest {
         new HomeUsersSignInPage(getDriver())
                 .clickClearInputRegularUserEmail(userEmail)
                 .clickClearInputRegularUserPassword()
-                .checkRemeberMeCheckBox()
+                .checkRememberMeCheckBox()
                 .clickSubmitButton();
 
         Cookie remember_user_token_new = getDriver().manage().getCookieNamed("remember_user_token");
