@@ -3,9 +3,9 @@ package pages.home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class HomeUsersSignInPage extends FooterMenuPage<HomeUsersSignInPage> {
+public class HomeUsersSignInPage extends BaseMainPage {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
     WebElement notification;

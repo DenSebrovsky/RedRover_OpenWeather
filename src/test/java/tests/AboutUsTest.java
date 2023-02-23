@@ -3,7 +3,6 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.MainPage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +20,7 @@ public class AboutUsTest extends BaseTest {
 
         List<String> actualOptions = openBaseURL()
                 .scrollToFooterMenu()
+                .getFooterMenu()
                 .clickAboutUsFooterMenu()
                 .scrollToWhereTo()
                 .waitAllOptionsAreVisibleAndClickable()
@@ -35,6 +35,7 @@ public class AboutUsTest extends BaseTest {
 
         String actualH1Header = openBaseURL()
                 .scrollToFooterMenu()
+                .getFooterMenu()
                 .clickAboutUsFooterMenu()
                 .getTextH1Header();
 

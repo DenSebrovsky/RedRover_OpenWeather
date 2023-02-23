@@ -8,7 +8,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import pages.MainPage;
+import pages.StartPage;
 import utils.ReportUtils;
 import utils.TestUtils;
 
@@ -71,7 +71,7 @@ public abstract class BaseTest {
         Thread.sleep(millis);
     }
 
-    public MainPage openBaseURL() {
+    public StartPage openBaseURL() {
         TestUtils.loadBaseUrlPage(getDriver(), getWait());
 
         if (TestUtils.isH2HeaderExists(getDriver())) {
@@ -80,7 +80,7 @@ public abstract class BaseTest {
             TestUtils.reLoadBaseUrlPage(getDriver(), getWait());
         }
 
-        return new MainPage(getDriver());
+        return new StartPage(getDriver());
     }
 
     public String getExternalPageTitle() {

@@ -16,6 +16,7 @@ public class WeatherMapsTest extends BaseTest {
         final String partialUrl = "http";
 
         WeatherMapsPage weatherMapsPage = openBaseURL()
+                .getTopMenu()
                 .clickMapsMenu()
                 .clickZoomInLoupe()
                 .waitUntilUrlContains(partialUrl)
@@ -40,6 +41,7 @@ public class WeatherMapsTest extends BaseTest {
 
         List<String> actualLayersTexts =
                 openBaseURL()
+                        .getTopMenu()
                         .clickMapsMenu()
                         .getMenusTexts();
 
@@ -52,13 +54,15 @@ public class WeatherMapsTest extends BaseTest {
         final String locationROME = "Rome, Italy";
 
         WeatherMapsPage weatherMapsPage = openBaseURL()
+                .getTopMenu()
                 .clickMapsMenu()
                 .clickSearchButton();
 
         Assert.assertTrue(weatherMapsPage.isLoopDisplayBlockDisplayed());
 
         weatherMapsPage.clickLoopDisplayBlock();
-        String oldUrl = String.valueOf(weatherMapsPage.inputSearchCriteriaIntoSearchField(locationROME));
+        String oldUrl = String.valueOf(weatherMapsPage
+                .getTopMenu().inputSearchCriteriaIntoSearchField(locationROME));
 
         Assert.assertNotEquals(oldUrl, weatherMapsPage.getCurrentURL());
     }

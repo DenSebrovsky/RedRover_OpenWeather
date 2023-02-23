@@ -1,16 +1,11 @@
 package pages.top_menu;
 
 import org.openqa.selenium.WebDriver;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class WeatherDashboardPage extends FooterMenuPage<WeatherDashboardPage> {
+public class WeatherDashboardPage extends BaseMainPage {
 
     public WeatherDashboardPage(WebDriver driver) {
         super(driver);
-    }
-
-    public WeatherDashboardPage createGeneric() {
-
-        return new WeatherDashboardPage(getDriver());
     }
 }

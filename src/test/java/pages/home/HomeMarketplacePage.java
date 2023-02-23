@@ -3,11 +3,12 @@ package pages.home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.base_abstract.BaseMarketplacePage;
 import utils.TestUtils;
 
 import java.util.List;
 
-public class HomeMarketplacePage extends HomeFooterMenuPage<HomeMarketplacePage> {
+public class HomeMarketplacePage extends BaseMarketplacePage {
 
     final static String HOME_MARKETPLACE_BUTTONS_CONTAINER = "//div[@class='button-container']/a";
     final static String DESKTOP_MENU_ID = "//ul[@id='desktop-menu']/li/a";

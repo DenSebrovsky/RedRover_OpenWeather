@@ -3,12 +3,12 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BulkPage extends FooterMenuPage<BulkPage> {
+public class BulkPage extends BaseMainPage {
 
     @FindBy(xpath = "//section[@id='how']/h2")
     private WebElement h2Header;

@@ -27,6 +27,7 @@ public class WeatherStationsTest extends BaseTest {
         List<String> actualSummaryTexts =
                 openBaseURL()
                         .scrollToPageBottom()
+                        .getFooterMenu()
                         .clickConnectYourWeatherStationFooterMenu()
                         .waitAllSummaryElementsVisibleAndClickable()
                         .getSummaryTextsWeatherStations();

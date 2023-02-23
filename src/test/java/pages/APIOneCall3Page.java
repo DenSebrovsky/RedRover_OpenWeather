@@ -3,12 +3,12 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class APIOneCall3Page extends FooterMenuPage<APIOneCall3Page> {
+public class APIOneCall3Page extends BaseMainPage {
 
     @FindBy(xpath = "//section[@id='how']//tbody/*")
     private List<WebElement> APIOneCall3Parameters;

@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import pages.base_abstract.BreadCrumbPage;
+import pages.base_abstract.BaseMainBreadcrumbsPage;
 
-public class SolarRadiationAPIPage extends BreadCrumbPage<SolarRadiationAPIPage> {
+public class SolarRadiationAPIPage extends BaseMainBreadcrumbsPage {
 
     public SolarRadiationAPIPage(WebDriver driver) {
         super(driver);

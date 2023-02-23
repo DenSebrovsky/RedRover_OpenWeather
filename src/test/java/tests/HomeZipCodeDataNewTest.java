@@ -17,6 +17,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final int expectedStatesAmount = 51;
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -35,6 +36,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final int expectedAmountOfYears = 2;
 
         List<String> actualYears = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -51,6 +53,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String stateName = "Virginia";
 
         String actualPriceForVirginia = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -66,6 +69,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final List<String> expectedWeatherParameters = ProjectConstants.EXPECTED_WEATHER_PARAMETERS;
 
         List<String> actualWeatherParameters = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -82,6 +86,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String expectedValue = "current";
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -116,6 +121,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
                 expectedPrice);
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -142,6 +148,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String email = ProjectConstants.EMAIL;
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -178,6 +185,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String expectedErrorMessageText = "Cannot be blank";
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -212,6 +220,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String expectedErrorMessageText = "Cannot be blank";
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -246,6 +255,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String expectedErrorMessageText = "Cannot be blank";
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()
@@ -280,6 +290,7 @@ public class HomeZipCodeDataNewTest extends BaseTest {
         final String expectedErrorMessageText = "Cannot be blank";
 
         HomeZipCodeDataNewPage homeZipCodeDataNewPage = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickWeatherDataByStateMenu()

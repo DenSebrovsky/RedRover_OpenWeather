@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.RoadRiskAPIPage;
 import pages.SolarRadiationAPIPage;
-import pages.base_abstract.BreadCrumbPage;
+import pages.base_abstract.BaseMainBreadcrumbsPage;
 
 import java.util.List;
 
-public class GuidePage extends BreadCrumbPage<GuidePage> {
+public class GuidePage extends BaseMainBreadcrumbsPage {
 
     @FindBy(xpath = "//a[@href='/api/solar-radiation']")
     private WebElement solarRadiationLink;

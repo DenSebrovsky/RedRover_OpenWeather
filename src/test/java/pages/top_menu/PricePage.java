@@ -3,11 +3,11 @@ package pages.top_menu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.BreadCrumbPage;
+import pages.base_abstract.BaseMainBreadcrumbsPage;
 
 import java.util.List;
 
-public class PricePage extends BreadCrumbPage<PricePage> {
+public class PricePage extends BaseMainBreadcrumbsPage {
 
     @FindBy(xpath = "//a[@class = 'btn_block transparent round']")
     private List<WebElement> transparentButtons;

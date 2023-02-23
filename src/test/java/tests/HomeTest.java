@@ -17,6 +17,7 @@ public class HomeTest extends BaseTest {
     @Test
     public void testSuccessfulSignIn() {
         String actualSignInMessage = openBaseURL()
+                .getTopMenu()
                 .signIn()
                 .getNotification();
 
@@ -31,7 +32,7 @@ public class HomeTest extends BaseTest {
                 "Agricultural Dashboard and Agro API"
         );
 
-        openBaseURL().signIn();
+        openBaseURL().getTopMenu().signIn();
 
         List<String> actualH2Headers = new HomePage(getDriver()).getListH2Headers();
 
@@ -45,6 +46,7 @@ public class HomeTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         List<WebElement> orangeButtons = openBaseURL()
+                .getTopMenu()
                 .signIn()
                 .getOrangeButtons();
 
@@ -65,6 +67,7 @@ public class HomeTest extends BaseTest {
         final String userEmail = "jKA59433@xcOxc.com";
 
         final String signInMenuText = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .getSignInText();
 
@@ -91,6 +94,7 @@ public class HomeTest extends BaseTest {
                 .getCurrentURL();
 
         String actualURL = new HomeUsersSignInPage(getDriver())
+                .getTopMenu()
                 .signIn()
                 .getCurrentURL();
 
@@ -107,6 +111,7 @@ public class HomeTest extends BaseTest {
         final String userEmail = "jKA59433@xcOxc.com";
 
         openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu();
         Cookie remember_user_token_old = getDriver().manage().getCookieNamed("remember_user_token");
         Assert.assertTrue(remember_user_token_old==null);

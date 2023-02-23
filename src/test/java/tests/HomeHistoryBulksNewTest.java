@@ -15,6 +15,7 @@ public class HomeHistoryBulksNewTest extends BaseTest {
         HomeHistoryBulksNewPage homeHistoryBulksNewPage = new HomeHistoryBulksNewPage(getDriver());
 
         List<WebElement> checkBoxes = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickHistoryBulkMenu()
@@ -31,6 +32,7 @@ public class HomeHistoryBulksNewTest extends BaseTest {
         HomeHistoryBulksNewPage homeHistoryBulksNewPage = new HomeHistoryBulksNewPage(getDriver());
 
         List<WebElement> checkBoxes = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .clickHistoryBulkMenu()

@@ -1,9 +1,9 @@
 package pages.footer_menu;
 
 import org.openqa.selenium.WebDriver;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class TechnologyPage extends FooterMenuPage<TechnologyPage> {
+public class TechnologyPage extends BaseMainPage {
 
     public TechnologyPage(WebDriver driver) {
         super(driver);

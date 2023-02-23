@@ -12,6 +12,7 @@ public class HomeAskQuestionTest extends BaseTest {
         final String expectedMessage = "reCAPTCHA verification failed, please try again.";
 
         String actualMessage = openBaseURL()
+                .getTopMenu()
                 .clickSupportMenu()
                 .clickAskQuestionSupportSubmenu()
                 .inputTextInEmailTextbox(ProjectConstants.EMAIL)
@@ -29,6 +30,7 @@ public class HomeAskQuestionTest extends BaseTest {
                 "Please enter your account email in our system - it will help us process your request faster";
 
         String actualMessage = openBaseURL()
+                .getTopMenu()
                 .clickSupportMenu()
                 .clickAskQuestionSupportSubmenu()
                 .clickYesRadioButton()

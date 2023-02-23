@@ -1,16 +1,11 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class OurInitiativesPage extends FooterMenuPage<OurInitiativesPage> {
+public class OurInitiativesPage extends BaseMainPage {
 
     public OurInitiativesPage(WebDriver driver) {
         super(driver);
-    }
-
-    public OurInitiativesPage createGeneric() {
-
-        return new OurInitiativesPage(getDriver());
     }
 }

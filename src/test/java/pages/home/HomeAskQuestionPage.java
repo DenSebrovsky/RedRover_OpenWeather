@@ -3,9 +3,9 @@ package pages.home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class HomeAskQuestionPage extends FooterMenuPage<HomeAskQuestionPage> {
+public class HomeAskQuestionPage extends BaseMainPage {
 
     @FindBy(id = "question_form_email")
     private WebElement emailTextBox;

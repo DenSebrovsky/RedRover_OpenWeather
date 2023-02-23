@@ -11,8 +11,10 @@ public class FAQTest extends BaseTest {
         final String expectedHeader = "Frequently Asked Questions";
 
         String actualHeader = openBaseURL()
+                .getTopMenu()
                 .clickSupportMenu()
                 .clickFAQSupportSubmenu()
+                .getBreadcrumbs()
                 .getH1Header();
 
         Assert.assertEquals(actualHeader, expectedHeader);
@@ -22,10 +24,11 @@ public class FAQTest extends BaseTest {
     public void testH3HeadersAmount() {
         final int expectedH3HeadersAmount = 10;
 
-        int actualH3HeadersAmount = openBaseURL().
-                clickSupportMenu().
-                clickFAQSupportSubmenu().
-                getH3HeadersAmount();
+        int actualH3HeadersAmount = openBaseURL()
+                .getTopMenu()
+                .clickSupportMenu()
+                .clickFAQSupportSubmenu()
+                .getH3HeadersAmount();
 
         Assert.assertEquals(actualH3HeadersAmount, expectedH3HeadersAmount);
     }
@@ -35,6 +38,7 @@ public class FAQTest extends BaseTest {
         final int expectedOpenedFAQAmount = 59;
 
         int actualOpenedFAQAmount = openBaseURL()
+                .getTopMenu()
                 .clickSupportMenu()
                 .clickFAQSupportSubmenu()
                 .getOpenedFAQAmount();

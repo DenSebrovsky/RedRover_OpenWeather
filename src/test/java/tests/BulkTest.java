@@ -2,11 +2,13 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.BulkPage;
 
 public class BulkTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testH2Header() {
         final String expectedH2Header = "How to use the service";

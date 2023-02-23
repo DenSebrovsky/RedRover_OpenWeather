@@ -3,11 +3,11 @@ package pages.home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseHomePage;
 
 import java.util.List;
 
-public class HomeAPIKeysPage extends FooterMenuPage<HomeAPIKeysPage> {
+public class HomeAPIKeysPage extends BaseHomePage {
 
     @FindBy(id = "api_key_form_name")
     private WebElement inputAPIKeysName;
@@ -37,18 +37,13 @@ public class HomeAPIKeysPage extends FooterMenuPage<HomeAPIKeysPage> {
         super(driver);
     }
 
-    public HomeAPIKeysPage createGeneric() {
-
-        return new HomeAPIKeysPage(getDriver());
-    }
-
     public String getLastAPIKeyStatus() {
         List<String> keys = getTexts(apiKeys);
         List<String> keysStatuses = getTexts(apiKeysStatuses);
         String lastKeyName = getLastGeneratedAPIKeyName();
         String lastKeyStatus = "";
 
-        for(int i = 0; i < keys.size(); i ++) {
+        for (int i = 0; i < keys.size(); i++) {
             if (keys.get(i).contains(lastKeyName)) {
                 lastKeyStatus = keysStatuses.get(i);
             }
@@ -78,7 +73,7 @@ public class HomeAPIKeysPage extends FooterMenuPage<HomeAPIKeysPage> {
 
         }
 
-        return  newKeyName;
+        return newKeyName;
     }
 
     public HomeAPIKeysPage clickAPIKeyNameField() {

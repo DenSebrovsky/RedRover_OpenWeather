@@ -3,11 +3,11 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.List;
 
-public class WeatherStationsPage extends FooterMenuPage<WeatherStationsPage> {
+public class WeatherStationsPage extends BaseMainPage {
 
     @FindBy(xpath = "//div[@class='doc-container']//nav//li/a")
     private List<WebElement> summaryListWeatherStations;

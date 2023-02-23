@@ -12,6 +12,7 @@ public class HomeSignUpTest extends BaseTest {
         final String expectedReCaptchaErrorMessage = "reCAPTCHA verification failed, please try again.";
 
         String actualReCaptchaErrorMessage = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .clickCreateAnAccountLink()
                 .clickClearInputNewUsername()
@@ -32,6 +33,7 @@ public class HomeSignUpTest extends BaseTest {
         final String expectedTitle = "Privacy policy - OpenWeatherMap";
 
         final String oldURL = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .clickCreateAnAccountLink()
                 .getCurrentURL();

@@ -17,6 +17,7 @@ public class HomeAPIKeysTest extends BaseTest {
         final String expectedAPIKeyStatus = "Active";
 
         HomeAPIKeysPage homeAPIKeysPage = openBaseURL()
+                .getTopMenu()
                 .signIn()
                 .clickAPIKeysTab();
 
@@ -43,6 +44,7 @@ public class HomeAPIKeysTest extends BaseTest {
         final String expectedNotificationMessage = "API key was deleted successfully";
 
         HomeAPIKeysPage homeAPIKeysPage = openBaseURL()
+                .getTopMenu()
                 .signIn()
                 .clickAPIKeysTab();
 

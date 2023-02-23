@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.MainPage;
+import pages.StartPage;
 import pages.top_menu.PartnersPage;
 
 import java.util.List;
@@ -15,7 +15,9 @@ public class PartnersTest extends BaseTest {
         final String expectedHeader = "Partners and solutions";
 
         String actualHeader = openBaseURL()
+                .getTopMenu()
                 .clickPartnersMenu()
+                .getBreadcrumbs()
                 .getH1Header();
 
         Assert.assertEquals(actualHeader, expectedHeader);
@@ -26,6 +28,7 @@ public class PartnersTest extends BaseTest {
         final String expectedURL = "https://camel.apache.org/components/next/weather-component.html";
 
         PartnersPage partnersPage = openBaseURL()
+                .getTopMenu()
                 .clickPartnersMenu();
 
         String oldURL = partnersPage.getCurrentURL();
@@ -34,7 +37,7 @@ public class PartnersTest extends BaseTest {
                 .clickApacheCamelLink()
                 .clickSeeOnWebsiteButton();
 
-        new MainPage(getDriver()).switchToExternalPage();
+        new StartPage(getDriver()).switchToExternalPage();
 
         Assert.assertNotEquals(oldURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedURL);
@@ -63,6 +66,7 @@ public class PartnersTest extends BaseTest {
         );
 
         List<String> actualRightSideLinks = openBaseURL()
+                .getTopMenu()
                 .clickPartnersMenu()
                 .getRightSideLinksText();
 

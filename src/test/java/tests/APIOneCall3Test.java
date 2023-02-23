@@ -25,6 +25,7 @@ public class APIOneCall3Test extends BaseTest {
                 + "language. Learn more";
 
         APIOneCall3Page apiOneCall3Page = openBaseURL()
+                .getTopMenu()
                 .clickAPIMenu()
                 .clickAPIDocButton();
 

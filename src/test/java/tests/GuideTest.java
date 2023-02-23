@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.MainPage;
+import pages.StartPage;
 import pages.RoadRiskAPIPage;
 import pages.SolarRadiationAPIPage;
 import pages.top_menu.GuidePage;
@@ -17,7 +17,8 @@ public class GuideTest extends BaseTest {
 
         String baseURL = openBaseURL().getCurrentURL();
 
-        String guideURL = new MainPage(getDriver())
+        String guideURL = new StartPage(getDriver())
+                .getTopMenu()
                 .clickGuideMenu()
                 .getCurrentURL();
 
@@ -25,6 +26,7 @@ public class GuideTest extends BaseTest {
         Assert.assertEquals(guideURL, expectedGuideURL);
 
         String actualURL = new GuidePage(getDriver())
+                .getBreadcrumbs()
                 .clickHomeLink()
                 .waitForGreyContainerDisappeared()
                 .getCurrentURL();
@@ -40,6 +42,7 @@ public class GuideTest extends BaseTest {
         final String expectedTitle = "Solar radiation API - OpenWeatherMap";
 
         String oldURL = openBaseURL()
+                .getTopMenu()
                 .clickGuideMenu()
                 .getCurrentURL();
 
@@ -62,6 +65,7 @@ public class GuideTest extends BaseTest {
         final String expectedTitle = "Road Risk - OpenWeatherMap";
 
         String oldURL = openBaseURL()
+                .getTopMenu()
                 .clickGuideMenu()
                 .getCurrentURL();
 
@@ -81,6 +85,7 @@ public class GuideTest extends BaseTest {
         final int expectedAmount = 5;
 
         int actualAmount = openBaseURL()
+                .getTopMenu()
                 .clickGuideMenu()
                 .countLearnMoreButtons();
 

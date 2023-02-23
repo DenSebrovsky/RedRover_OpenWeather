@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
-public class CurrentWeatherPage extends FooterMenuPage<CurrentWeatherPage> {
+public class CurrentWeatherPage extends BaseMainPage {
 
     @FindBy(xpath = "//section[@id='geo']/div[@class='api']/code")
     private WebElement apiCallTemplate;

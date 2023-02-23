@@ -3,11 +3,11 @@ package pages.top_menu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.BreadCrumbPage;
+import pages.base_abstract.BaseMainBreadcrumbsPage;
 
 import java.util.List;
 
-public class PartnersPage extends BreadCrumbPage<PartnersPage> {
+public class PartnersPage extends BaseMainBreadcrumbsPage {
 
     @FindBy(xpath = "//a[@href='#apache']")
     private WebElement apacheCamellink;

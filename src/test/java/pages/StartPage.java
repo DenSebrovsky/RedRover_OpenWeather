@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 import utils.DateTimeUtils;
 import utils.TestUtils;
 
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static utils.TestUtils.convertStringToInt;
 
-public class MainPage extends FooterMenuPage<MainPage> {
+public class StartPage extends BaseMainPage {
 
     @FindBy(className = "owm-loader-container")
     private WebElement greyContainer;
@@ -186,13 +186,13 @@ public class MainPage extends FooterMenuPage<MainPage> {
     @FindBy(xpath = "//ul//li[contains(text(), '%')]")
     private WebElement currentHumidity;
 
-    public MainPage(WebDriver driver) {
+    public StartPage(WebDriver driver) {
         super(driver);
     }
 
-    public MainPage createGeneric() {
+    public StartPage createGeneric() {
 
-        return new MainPage(getDriver());
+        return new StartPage(getDriver());
     }
 
     public String getCityCountryName() {
@@ -376,44 +376,44 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return pressure.substring(0, pressure.length() - 3);
     }
 
-    public MainPage clickSearchCityField() {
+    public StartPage clickSearchCityField() {
         click(searchCityField);
 
         return this;
     }
 
-    public MainPage clickSearchButton() {
+    public StartPage clickSearchButton() {
         click(searchButton);
 
         return this;
     }
 
-    public MainPage clickParisInDropDownList() {
+    public StartPage clickParisInDropDownList() {
         wait20ElementToBeVisible(searchDropdownMenu);
         click(parisFRChoiceInDropdownMenu);
 
         return this;
     }
 
-    public MainPage clickDifferentWeatherButton() {
+    public StartPage clickDifferentWeatherButton() {
         click(differentWeatherButton);
 
         return this;
     }
 
-    public MainPage clickIconOnDifferentWeatherPopUp(WebElement element) {
+    public StartPage clickIconOnDifferentWeatherPopUp(WebElement element) {
         click(element);
 
         return this;
     }
 
-    public MainPage clickCityNorway() {
+    public StartPage clickCityNorway() {
         click20(cityNorway);
 
         return this;
     }
 
-    public MainPage clickLocationButton() {
+    public StartPage clickLocationButton() {
         click20(locationButton);
 
         return this;
@@ -433,13 +433,13 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return new BulkPage(getDriver());
     }
 
-    public MainPage clickMoreOptionsDropDown() {
+    public StartPage clickMoreOptionsDropDown() {
         click20(moreOptionsDropDown);
 
         return this;
     }
 
-    public MainPage clickLessOptionsDropDown() {
+    public StartPage clickLessOptionsDropDown() {
         click20(moreOptionsDropDown);
 
         return this;
@@ -450,20 +450,20 @@ public class MainPage extends FooterMenuPage<MainPage> {
 
     }
 
-    public MainPage clickDataSourceDropDown() {
+    public StartPage clickDataSourceDropDown() {
         scrollByVisibleElement(dataSourceDropDown);
         click20(dataSourceDropDown);
 
         return this;
     }
 
-    public MainPage clickFirstDataSourceOption() {
+    public StartPage clickFirstDataSourceOption() {
         click(dataSourceOptions.get(0));
 
         return this;
     }
 
-    public MainPage clickOutOfDifferentWeatherContainer() {
+    public StartPage clickOutOfDifferentWeatherContainer() {
         Actions action = new Actions(getDriver());
         action.moveByOffset(0, 0).click().build().perform();
         getWait10().until(ExpectedConditions.invisibilityOf(differentWeatherPopUpContainer));
@@ -475,25 +475,25 @@ public class MainPage extends FooterMenuPage<MainPage> {
         click(getApiIcons().get(index));
     }
 
-    public MainPage scrollToFooterMenu() {
-        scrollByVisibleElement(getFooterMenu());
+    public StartPage scrollToFooterMenu() {
+        scrollByVisibleElement(getFooterMenu().getFooterMenu());
 
         return this;
     }
 
-    public MainPage inputSearchCriteria(String text) {
+    public StartPage inputSearchCriteria(String text) {
         input(text, searchCityField);
 
         return this;
     }
 
-    public MainPage waitForCityCountryNameChanged(String oldText) {
+    public StartPage waitForCityCountryNameChanged(String oldText) {
         waitTextToBeChanged(h2CityCountryHeader, oldText);
 
         return this;
     }
 
-    public MainPage waitUntilDifferentWeatherPopUpIsVisible() {
+    public StartPage waitUntilDifferentWeatherPopUpIsVisible() {
         wait10ElementToBeVisible(differentWeatherPopUpContainer);
 
         return this;
@@ -509,13 +509,13 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return isElementDisplayed(xButtonInDifferentWeatherContainer);
     }
 
-    public MainPage switchToMetric() {
+    public StartPage switchToMetric() {
         click(metricButton);
 
         return this;
     }
 
-    public MainPage switchToImperial() {
+    public StartPage switchToImperial() {
         click(imperialButton);
 
         return this;
@@ -537,34 +537,34 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return getListSize(activeIconsInDifferentWeatherContainer);
     }
 
-    public MainPage scrollToPageBottom() {
+    public StartPage scrollToPageBottom() {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
         return this;
     }
 
-    public MainPage waitForGreyContainerDisappeared() {
+    public StartPage waitForGreyContainerDisappeared() {
         waitForGreyContainerDisappeared(greyContainer);
 
         return this;
     }
 
-    public MainPage waitForFooterPanelToBeVisible() {
+    public StartPage waitForFooterPanelToBeVisible() {
         wait20ElementToBeVisible(footerPanelContainer);
         wait20ElementToBeVisible(bottomPanel);
 
         return this;
     }
 
-    public MainPage waitForElementToBeVisible() {
+    public StartPage waitForElementToBeVisible() {
         wait20ElementToBeVisible(allowAllButton);
         wait20ElementToBeVisible(manageButton);
 
         return this;
     }
 
-    public MainPage scrollToBulkLink() {
+    public StartPage scrollToBulkLink() {
 
         if (isElementDisplayed(bulkLink)) {
             wait20ElementToBeVisible(bulkLink);
@@ -579,32 +579,32 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return isElementDisplayed(locationButton);
     }
 
-    public MainPage scrollByCurrentWeatherIcon() {
+    public StartPage scrollByCurrentWeatherIcon() {
         scrollByVisibleElement(currentWeatherIcon);
 
         return this;
     }
 
-    public MainPage scrollToSubscriptionFooterMenu() {
-        scrollByVisibleElement(getSubscriptionFooterMenu());
+    public StartPage scrollToSubscriptionFooterMenu() {
+        scrollByVisibleElement(getFooterMenu().getSubscriptionFooterMenu());
 
         return this;
     }
 
-    public MainPage inputTextInEmailTextBox() {
+    public StartPage inputTextInEmailTextBox() {
         String randomEmail = TestUtils.getRandomName(7) + "@gmail.com";
         input(randomEmail, emailTextBox);
 
         return this;
     }
 
-    public MainPage inputTextInAdditionalInfoTextArea() {
+    public StartPage inputTextInAdditionalInfoTextArea() {
         input(TestUtils.getRandomName(9), anyAdditionalInfoTextarea);
 
         return this;
     }
 
-    public MainPage scrollByOrangeBackground() {
+    public StartPage scrollByOrangeBackground() {
         scrollByVisibleElement(orangeBackground);
 
         return this;
@@ -638,10 +638,9 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return humidity.substring(10, humidity.length() - 1);
     }
 
-    public MainPage scrollToProductCollectionsFooterMenu(){
+    public StartPage scrollToProductCollectionsFooterMenu() {
 
-        scrollByVisibleElement(getProductCollectionsFooterMenu());
+        scrollByVisibleElement(getFooterMenu().getProductCollectionsFooterMenu());
         return this;
     }
-
 }

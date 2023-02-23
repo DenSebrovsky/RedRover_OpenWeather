@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.APIOneCall3Page;
-import pages.base_abstract.BreadCrumbPage;
+import pages.base_abstract.BaseMainBreadcrumbsPage;
 
 import java.util.List;
 
-public class APIPage extends BreadCrumbPage<APIPage> {
+public class APIPage extends BaseMainBreadcrumbsPage {
 
     @FindBy(xpath = "//a[contains(@class,'orange')]")
     private List<WebElement> orangeButtons;

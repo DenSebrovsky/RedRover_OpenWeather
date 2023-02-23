@@ -18,6 +18,7 @@ public class HomeMarketplaceTest extends BaseTest {
         HomeMarketplacePage homeMarketplacePage = new HomeMarketplacePage(getDriver());
 
         List<WebElement> allButtons = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .getAllHomeMarketplaceButtons();
@@ -38,13 +39,13 @@ public class HomeMarketplaceTest extends BaseTest {
         final String expectedTitle = "Marketplace: History Bulk, History Forecast Bulk, Historical Weather Data by State for all ZIP codes, USA - OpenWeather";
 
         final String oldURL = openBaseURL()
+                .getTopMenu()
                 .clickMarketplaceMenu()
                 .switchToMarketplaceWindow()
                 .getCurrentURL();
 
-        HomeZipCodeDataNewPage homeZipCodeDataNewPage = new HomeZipCodeDataNewPage(getDriver());
-
-        homeZipCodeDataNewPage.clickWeatherDataByStateMenu();
+        HomeZipCodeDataNewPage homeZipCodeDataNewPage = new HomeMarketplacePage(getDriver())
+                .clickWeatherDataByStateMenu();
 
         String actualURL = homeZipCodeDataNewPage.getCurrentURL();
         String actualTitle = homeZipCodeDataNewPage.getTitle();

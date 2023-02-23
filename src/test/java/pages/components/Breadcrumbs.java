@@ -1,11 +1,12 @@
-package pages.base_abstract;
+package pages.components;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.MainPage;
+import pages.StartPage;
+import pages.base_abstract.BaseComponents;
 
-public abstract class BreadCrumbPage<Generic> extends FooterMenuPage<Generic> {
+public class Breadcrumbs<Generic> extends BaseComponents {
 
     @FindBy(xpath = "//h1[@class ='breadcrumb-title']")
     private WebElement h1Header;
@@ -13,11 +14,11 @@ public abstract class BreadCrumbPage<Generic> extends FooterMenuPage<Generic> {
     @FindBy(xpath = "//ol/li/a[@href = '/']")
     private WebElement homeLink;
 
-    public BreadCrumbPage(WebDriver driver) {
+    public Breadcrumbs(WebDriver driver) {
         super(driver);
     }
 
-    public abstract Generic createGeneric();
+//    public abstract Generic createGeneric();
 
     public String getH1Header() {
 
@@ -29,9 +30,9 @@ public abstract class BreadCrumbPage<Generic> extends FooterMenuPage<Generic> {
         return homeLink;
     }
 
-    public MainPage clickHomeLink() {
+    public StartPage clickHomeLink() {
         click(getHomeLink());
 
-        return new MainPage(getDriver());
+        return new StartPage(getDriver());
     }
 }

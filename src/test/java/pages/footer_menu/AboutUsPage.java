@@ -3,11 +3,11 @@ package pages.footer_menu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.List;
 
-public class AboutUsPage extends FooterMenuPage<AboutUsPage> {
+public class AboutUsPage extends BaseMainPage {
 
     @FindBy(xpath = "//div[@class='about-us']//h1")
     private WebElement aboutUsPageHeader;
@@ -32,7 +32,7 @@ public class AboutUsPage extends FooterMenuPage<AboutUsPage> {
         return getTexts(optionsUnderWhereTo);
     }
 
-    public String getTextH1Header(){
+    public String getTextH1Header() {
         return getText(aboutUsPageHeader);
     }
 

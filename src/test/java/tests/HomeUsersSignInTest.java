@@ -3,8 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.TestData;
-import pages.home.HomePage;
+import utils.TestData;
 import pages.home.HomeUsersSignInPage;
 
 public class HomeUsersSignInTest extends BaseTest {
@@ -12,7 +11,9 @@ public class HomeUsersSignInTest extends BaseTest {
     @Test
     public void testSignOut() {
         String actualSignOutMessage = openBaseURL()
+                .getTopMenu()
                 .signIn()
+                .getTopMenu()
                 .signOut()
                 .getNotification();
 
@@ -26,6 +27,7 @@ public class HomeUsersSignInTest extends BaseTest {
         final String userPassword = "Tester11#";
 
         final String oldSignInMenuText = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .getSignInText();
 
@@ -51,6 +53,7 @@ public class HomeUsersSignInTest extends BaseTest {
         final String userPassword = "tester12#";
 
         final String oldSignInMenuText = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .getSignInText();
 
@@ -73,6 +76,7 @@ public class HomeUsersSignInTest extends BaseTest {
     public void testSignInWithInvalidCredentials(String scenario, String userEmail, String userPassword, String expectedNoticeMessage, String expectedSignInMenuText) {
 
         final String oldSignInMenuText = openBaseURL()
+                .getTopMenu()
                 .clickSignInMenu()
                 .getSignInText();
 

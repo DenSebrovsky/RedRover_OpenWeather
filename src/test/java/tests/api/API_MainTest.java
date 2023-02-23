@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-import pages.MainPage;
+import pages.StartPage;
 import utils.DateTimeUtils;
 
 import java.io.IOException;
@@ -86,7 +86,7 @@ public class API_MainTest extends BaseTest {
                 .setUpDevTool(getDriver())
                 .captureHttpRequestsContain("weather");
 
-        MainPage mainPage = openBaseURL()
+        StartPage startPage = openBaseURL()
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton();
@@ -96,7 +96,7 @@ public class API_MainTest extends BaseTest {
         Assert.assertTrue(requestsSearchButton.get(requestsSearchButton.size() - 1)
                 .contains("openweathermap.org/data/2.5/find?q=Paris"));
 
-        mainPage.clickParisInDropDownList();
+        startPage.clickParisInDropDownList();
 
         Assert.assertNotNull(requestsSearchButton);
         Assert.assertEquals(requestsSearchButton.get(requestsSearchButton.size() - 2), "GET");
@@ -177,15 +177,15 @@ public class API_MainTest extends BaseTest {
         weatherTemp = Math.round(obj.getTemp());
         weatherFeelsLike = Math.round(obj.getFeels_like());
 
-        MainPage mainPage = openBaseURL()
+        StartPage startPage = openBaseURL()
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()
                 .clickParisInDropDownList()
                 .waitForCityCountryNameChanged("London, GB");
 
-        String actualCurrentTemp = mainPage.getCurrentTempAndUnit();
-        String actualFeelsLike = mainPage.getFeelsLike();
+        String actualCurrentTemp = startPage.getCurrentTempAndUnit();
+        String actualFeelsLike = startPage.getFeelsLike();
 
         Assert.assertEquals(actualCurrentTemp, String.valueOf(weatherTemp).concat("°C"));
         Assert.assertEquals(actualFeelsLike, "Feels like " + weatherFeelsLike + "°C.");
@@ -214,7 +214,7 @@ public class API_MainTest extends BaseTest {
 
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        final List<String> weatherDescriptionFromUI = new MainPage(getDriver())
+        final List<String> weatherDescriptionFromUI = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria(cityName)
                 .clickSearchButton()
@@ -252,7 +252,7 @@ public class API_MainTest extends BaseTest {
 
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        final List<String> uiResult = new MainPage(getDriver())
+        final List<String> uiResult = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()
@@ -300,7 +300,7 @@ public class API_MainTest extends BaseTest {
 
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        final List<String> uiResult = new MainPage(getDriver())
+        final List<String> uiResult = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()
@@ -370,7 +370,7 @@ public class API_MainTest extends BaseTest {
 
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        String actualUiResult = new MainPage(getDriver())
+        String actualUiResult = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()
@@ -405,7 +405,7 @@ public class API_MainTest extends BaseTest {
         final String pressureInParisFromAPI = ApiHelpers.getCurrentPressure(new JSONObject(response.body()));
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        String pressureInParisFromUI = new MainPage(getDriver())
+        String pressureInParisFromUI = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()
@@ -437,7 +437,7 @@ public class API_MainTest extends BaseTest {
         final String humidityInParisFromAPI = ApiHelpers.getCurrentHumidity(new JSONObject(response.body()));
         final String oldCityName = openBaseURL().getCityCountryName();
 
-        String humidityInParisFromUI = new MainPage(getDriver())
+        String humidityInParisFromUI = new StartPage(getDriver())
                 .clickSearchCityField()
                 .inputSearchCriteria("Paris")
                 .clickSearchButton()

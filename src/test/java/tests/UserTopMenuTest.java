@@ -8,23 +8,25 @@ import utils.TestUtils;
 
 import java.util.List;
 
-public class HomeTopMenuTest extends BaseTest {
+public class UserTopMenuTest extends BaseTest {
 
     @Test
-    public void testHomeTopMenusAmount() {
+    public void testUserTopMenusAmount() {
         final int expectedHomeTopMenusAmount = 9;
 
         HomePage homePage = new HomePage(getDriver());
 
         int actualHomeTopMenusAmount = openBaseURL()
+                .getTopMenu()
                 .signIn()
-                .getHomeTopMenusAmount();
+                .getUserTopMenu()
+                .getUserTopMenusAmount();
 
         Assert.assertEquals(actualHomeTopMenusAmount, expectedHomeTopMenusAmount);
     }
 
     @Test
-    public void testHomeTopMenus() {
+    public void testUserTopMenus() {
         List<String> expectedURLs = List.of(
                 "https://home.openweathermap.org/",
                 "https://home.openweathermap.org/myservices",
@@ -37,8 +39,10 @@ public class HomeTopMenuTest extends BaseTest {
                 "https://home.openweathermap.org/questions");
 
         List<String> actualURLs = openBaseURL()
+                .getTopMenu()
                 .signIn()
-                .clickHomeTopMenus();
+                .getUserTopMenu()
+                .clickUserTopMenus();
 
         TestUtils.waitForPageLoaded(getDriver());
 
@@ -56,6 +60,7 @@ public class HomeTopMenuTest extends BaseTest {
         );
 
         List<String> actualDropdownMenuTexts = openBaseURL()
+                .getTopMenu()
                 .signIn()
                 .clickUserNameMenu()
                 .getUserNameDropdownMenuTexts();

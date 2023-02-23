@@ -4,10 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.base_abstract.BaseMarketplacePage;
 
 import java.util.List;
 
-public class HomeZipCodeDataNewPage extends HomeMarketplacePage {
+public class HomeZipCodeDataNewPage extends BaseMarketplacePage {
 
     @FindBy(xpath = "//label[text()='Select state']//following-sibling::ul/li//span[1]")
     private List<WebElement> stateList;

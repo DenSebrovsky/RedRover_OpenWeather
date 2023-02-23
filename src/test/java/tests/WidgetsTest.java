@@ -17,6 +17,7 @@ public class WidgetsTest extends BaseTest {
 
         WidgetsPage widgetPage = openBaseURL()
                 .scrollToFooterMenu()
+                .getFooterMenu()
                 .clickWidgetsPageFooterMenu();
 
         sleep(1000);
@@ -50,6 +51,7 @@ public class WidgetsTest extends BaseTest {
 
         WidgetsPage widgetPage = openBaseURL()
                 .scrollToFooterMenu()
+                .getFooterMenu()
                 .clickWidgetsPageFooterMenu();
 
         final String oldCity = widgetPage.getCityName();
@@ -75,6 +77,7 @@ public class WidgetsTest extends BaseTest {
 
         WidgetsPage widgetPage = openBaseURL()
                 .scrollToFooterMenu()
+                .getFooterMenu()
                 .clickWidgetsPageFooterMenu();
 
         sleep(1000);

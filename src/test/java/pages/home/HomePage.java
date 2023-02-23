@@ -3,10 +3,11 @@ package pages.home;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.base_abstract.BaseHomePage;
 
 import java.util.List;
 
-public class HomePage extends HomeTopMenuPage<HomePage> {
+public class HomePage extends BaseHomePage {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
     WebElement notification;

@@ -3,11 +3,11 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.List;
 
-public class FindPage extends FooterMenuPage<FindPage> {
+public class FindPage extends BaseMainPage {
 
     @FindBy(id = "search_str")
     private WebElement searchFieldWeatherInYourCity;

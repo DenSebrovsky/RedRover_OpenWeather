@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.base_abstract.FooterMenuPage;
+import pages.base_abstract.BaseMainPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WidgetsPage extends FooterMenuPage<WidgetsPage> {
+public class WidgetsPage extends BaseMainPage {
 
     @FindBy(id = "api-key")
     private WebElement yourAPIKeyField;

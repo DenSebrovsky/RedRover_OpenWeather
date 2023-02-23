@@ -5,11 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.base_abstract.TopMenuPage;
+import pages.base_abstract.BasePage;
+import pages.components.TopMenu;
 
 import java.util.List;
 
-public class WeatherMapsPage extends TopMenuPage<WeatherMapsPage> {
+public class WeatherMapsPage extends BasePage {
 
     @FindBy(xpath = "//a[@class='leaflet-control-zoom-in']")
     private WebElement zoomInLoupe;
@@ -32,14 +33,15 @@ public class WeatherMapsPage extends TopMenuPage<WeatherMapsPage> {
     @FindBy(xpath = "//a[@title='Nominatim Search']")
     private WebElement nominatimSearchButton;
 
+    private final TopMenu topMenu;
+
     public WeatherMapsPage(WebDriver driver) {
         super(driver);
+        this.topMenu = new TopMenu(getDriver());
     }
 
-    @Override
-    public WeatherMapsPage createGeneric() {
-
-        return new WeatherMapsPage(getDriver());
+    public TopMenu getTopMenu() {
+        return topMenu;
     }
 
     public String getZoomOutText() {

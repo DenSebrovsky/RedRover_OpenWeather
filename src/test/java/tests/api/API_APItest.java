@@ -19,7 +19,7 @@ public class API_APItest extends BaseTest {
         int responseCode;
         int actualWorkingLinksCount = 0;
 
-        List<WebElement> aTags = openBaseURL().clickAPIMenu().getHTTPSLinks();
+        List<WebElement> aTags = openBaseURL().getTopMenu().clickAPIMenu().getHTTPSLinks();
 
         final int expectedWorkingLinksCount = aTags.size();
         int internalLinks = expectedWorkingLinksCount;
