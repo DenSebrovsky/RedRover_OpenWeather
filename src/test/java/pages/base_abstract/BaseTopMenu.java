@@ -13,6 +13,7 @@ import pages.home.HomeUsersSignInPage;
 import pages.top_menu.FAQPage;
 import pages.top_menu.HowToStartPage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseTopMenu<Top extends BaseTopMenu> extends BaseComponents {
@@ -22,7 +23,7 @@ public abstract class BaseTopMenu<Top extends BaseTopMenu> extends BaseComponent
     @FindBy(id = "support-dropdown")
     protected WebElement supportTopMenu;
     @FindBy(xpath = "//li[@class='logo']/a")
-    private WebElement logo;
+    protected WebElement logo;
     @FindBy(xpath = TOP_MENU_ID + "//a[@href='https://home.openweathermap.org/marketplace']")
     private WebElement marketplaceTopMenu;
     @FindBy(xpath = TOP_MENU_ID + "//li[@class='user-li']/a")
@@ -31,7 +32,7 @@ public abstract class BaseTopMenu<Top extends BaseTopMenu> extends BaseComponent
     private WebElement supportTopMenuDropdown;
 
     @FindBy(xpath = "//li[@class='with-dropdown']//li/a")
-    private List<WebElement> supportTopMenuDropdownLinks;
+    protected List<WebElement> supportTopMenuDropdownLinks;
 
     @FindBy(xpath = SUPPORT_DROPDOWN_ID + "//li/a[@href='/faq']")
     private WebElement faqSupportSubmenu;
@@ -157,5 +158,16 @@ public abstract class BaseTopMenu<Top extends BaseTopMenu> extends BaseComponent
     public String getSupportMenuIsActiveValue() {
 
         return getAttribute(supportTopMenuDropdown, "class");
+    }
+
+    public void clickSupportMenuLinks(int index) {
+        List<WebElement> menusSupport = new ArrayList<>();
+        menusSupport.addAll(supportTopMenuDropdownLinks);
+
+        click(menusSupport.get(index));
+
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
     }
 }

@@ -10,6 +10,7 @@ import pages.home.HomePage;
 import pages.top_menu.*;
 import utils.TestUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopMenu extends BaseTopMenu {
@@ -168,5 +169,17 @@ public class TopMenu extends BaseTopMenu {
         clickSignInMenu().signInAsGmailUserNewPassword();
 
         return new HomePage(getDriver());
+    }
+
+    public void clickTopMenu(int index) {
+        List<WebElement> menus = new ArrayList<>();
+        menus.add(logo);
+        menus.addAll(topMenus);
+
+        click(menus.get(index));
+
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
     }
 }

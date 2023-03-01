@@ -3,13 +3,13 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.StartPage;
 import pages.OurInitiativesPage;
-import utils.TestData;
+import pages.StartPage;
 import pages.home.HomeMarketplacePage;
 import pages.home.HomeUsersSignInPage;
 import pages.top_menu.*;
 import utils.ProjectConstants;
+import utils.TestData;
 
 import java.util.List;
 
@@ -299,33 +299,38 @@ public class TopMenuTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-//    @Test(dataProvider = "TopMenuTestData", dataProviderClass = TestData.class)
-//    public void testEachTopMenuNavigatesToCorrespondingPage(
-//            int index, String menuName, String href, String expectedURL, String expectedTitle) {
-//
-//        StartPage startPage = openBaseURL();
-//
-//        String oldURL = startPage.getCurrentURL();
-//        String oldTitle = startPage.getTitle();
-//
-//        startPage.clickTopMenu(index);
-//
-//        String actualURL = getDriver().getCurrentUrl();
-//        String actualTitle = getDriver().getTitle();
-//
-//        if (index != 0) {
-//            Assert.assertNotEquals(actualURL, oldURL);
-//            Assert.assertNotEquals(actualTitle, oldTitle);
-//        }
-//
-//        if (index != 6) {
-//            Assert.assertEquals(actualURL, expectedURL);
-//        } else {
-//            Assert.assertTrue(actualURL.contains(expectedURL));
-//        }
-//
-//        Assert.assertEquals(actualTitle, expectedTitle);
-//    }
+    @Test(dataProvider = "TopMenuTestData", dataProviderClass = TestData.class)
+    public void testEachTopMenuNavigatesToCorrespondingPage(
+            int index, String menuName, String href, String expectedURL, String expectedTitle) {
+
+        StartPage startPage = openBaseURL();
+
+        String oldURL = startPage.getCurrentURL();
+        String oldTitle = startPage.getTitle();
+
+        if (index < 12) {
+            startPage.getTopMenu().clickTopMenu(index);
+        } else {
+            index -= 12;
+            startPage.getTopMenu().clickSupportMenu().clickSupportMenuLinks(index);
+        }
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+
+        if (index != 6) {
+            Assert.assertEquals(actualURL, expectedURL);
+        } else {
+            Assert.assertTrue(actualURL.contains(expectedURL));
+        }
+
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
 
     @Test(dataProvider = "ExternalTopMenuTestData", dataProviderClass = TestData.class)
     public void testExternalTopMenuNavigatesToCorrespondingPage(
