@@ -125,13 +125,13 @@ public class TopMenu extends BaseTopMenu {
         return this;
     }
 
-    public FindPage inputSearchCriteriaIntoSearchField(String text) {
+    public TopMenu inputSearchCriteriaIntoSearchField(String text) {
         if (!getText(searchFieldTopMenu).isEmpty() && !getText(searchFieldTopMenu).isBlank()) {
             clear(searchFieldTopMenu);
         }
         input(text, searchFieldTopMenu);
 
-        return new FindPage(getDriver());
+        return this;
     }
 
     public FindPage clickEnter() {
