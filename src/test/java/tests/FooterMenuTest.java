@@ -4,7 +4,6 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.StartPage;
-import utils.TestData;
 import pages.WeatherStationsPage;
 import pages.footer_menu.AboutUsPage;
 import pages.footer_menu.TechnologyPage;
@@ -13,6 +12,7 @@ import pages.home.HomeAskQuestionPage;
 import pages.top_menu.PricePage;
 import pages.top_menu.WeatherDashboardPage;
 import tests.retrytest.Retry;
+import utils.TestData;
 import utils.TestUtils;
 
 import java.net.MalformedURLException;
@@ -394,24 +394,27 @@ public class FooterMenuTest extends BaseTest {
         Assert.assertEquals(actualLinks, expectedLinks);
     }
 
-//    @Test(dataProvider = "FooterMenuData", dataProviderClass = TestData.class)
-//    public void testFooterMenuLinksNavigateToCorrespondingPages(
-//            int index, String linkName, String href, String expectedURL, String expectedTitle) {
-//
-//        StartPage startPage = openBaseURL();
-//
-//        final String oldURL = startPage.getCurrentURL();
-//        final String oldTitle = startPage.getTitle();
-//
-//        String actualURL = startPage
-//                .scrollToFooterMenu().clickFooterMenu(index).getCurrentURL();
-//        String actualTitle = getDriver().getTitle();
-//
-//        Assert.assertNotEquals(oldURL, actualURL);
-//        Assert.assertNotEquals(oldTitle, actualTitle);
-//        Assert.assertEquals(actualURL, expectedURL);
-//        Assert.assertEquals(actualTitle, expectedTitle);
-//    }
+    @Test(dataProvider = "FooterMenuData", dataProviderClass = TestData.class)
+    public void testFooterMenuLinksNavigateToCorrespondingPages(
+            int index, String linkName, String href, String expectedURL, String expectedTitle) {
+
+        StartPage startPage = openBaseURL();
+
+        final String oldURL = startPage.getCurrentURL();
+        final String oldTitle = startPage.getTitle();
+
+        startPage.scrollToFooterMenu()
+                .getFooterMenu()
+                .clickFooterMenu(index);
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldTitle, actualTitle);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
 
     @Test(dataProvider = "ExternalFooterMenuData", dataProviderClass = TestData.class)
     public void testExternalMenuLinksNavigateToCorrespondingPages(
@@ -436,9 +439,9 @@ public class FooterMenuTest extends BaseTest {
     }
 
     @Test
-    public void testProductCollectionsText(){
+    public void testProductCollectionsText() {
         List<String> expectedProductCollectionsText = List.of(
-             "Current and Forecast APIs",
+                "Current and Forecast APIs",
                 "Historical Weather Data",
                 "Weather Maps",
                 "Weather Dashboard",
@@ -455,7 +458,7 @@ public class FooterMenuTest extends BaseTest {
     }
 
     @Test
-    public void testFAQFooterLinkNavigateToFAQPage(){
+    public void testFAQFooterLinkNavigateToFAQPage() {
         final String expectedURL = "https://openweathermap.org/faq";
         final String expectedTitle = "Frequently Asked Questions - OpenWeatherMap";
 

@@ -54,17 +54,6 @@ public class FooterMenu extends BaseFooter {
         return this;
     }
 
-//    public abstract Generic createGeneric();
-//
-//    public Generic clickFooterMenu(int index) {
-//        click(getInnerFooterMenuLinks().get(index));
-//        if (getDriver().getWindowHandles().size() > 1) {
-//            switchToAnotherWindow();
-//        }
-//
-//        return createGeneric();
-//    }
-
     public WebElement getSubscriptionFooterMenu() {
 
         return subscription;

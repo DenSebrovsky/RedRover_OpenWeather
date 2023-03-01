@@ -155,4 +155,11 @@ public abstract class BaseFooter<Footer extends BaseFooter> extends BaseComponen
 
         return new FAQPage(getDriver());
     }
+
+    public void clickFooterMenu(int index) {
+        click(getInnerFooterMenuLinks().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+    }
 }
