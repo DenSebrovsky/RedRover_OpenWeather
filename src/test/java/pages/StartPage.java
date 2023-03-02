@@ -426,7 +426,7 @@ public class StartPage extends BaseMainPage {
         return new CurrentWeatherPage(getDriver());
     }
 
-    public BulkPage clickBulks() {
+    public BulkPage clickPreparedBulks() {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].click()", bulkLink);
 
@@ -564,7 +564,7 @@ public class StartPage extends BaseMainPage {
         return this;
     }
 
-    public StartPage scrollToBulkLink() {
+    public StartPage scrollToPreparedBulksLink() {
 
         if (isElementDisplayed(bulkLink)) {
             wait20ElementToBeVisible(bulkLink);

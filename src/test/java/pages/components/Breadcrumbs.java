@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.StartPage;
 import pages.base_abstract.BaseComponents;
 
-public class Breadcrumbs<Generic> extends BaseComponents {
+public class Breadcrumbs extends BaseComponents {
 
     @FindBy(xpath = "//h1[@class ='breadcrumb-title']")
     private WebElement h1Header;
@@ -17,8 +17,6 @@ public class Breadcrumbs<Generic> extends BaseComponents {
     public Breadcrumbs(WebDriver driver) {
         super(driver);
     }
-
-//    public abstract Generic createGeneric();
 
     public String getH1Header() {
 

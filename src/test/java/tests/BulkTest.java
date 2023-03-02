@@ -2,23 +2,21 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.BulkPage;
 
 public class BulkTest extends BaseTest {
 
-    @Ignore
     @Test
-    public void testH2Header() {
-        final String expectedH2Header = "How to use the service";
+    public void testH1Header() {
+        final String expectedH1Header = "How to use the service";
 
-        String actualH2Header = openBaseURL()
-                .scrollToBulkLink()
-                .clickBulks()
-                .getH2Header();
+        String actualH1Header = openBaseURL()
+                .scrollToPreparedBulksLink()
+                .clickPreparedBulks()
+                .getH1Header();
 
-        Assert.assertEquals(actualH2Header, expectedH2Header);
+        Assert.assertEquals(actualH1Header, expectedH1Header);
     }
 
     @Test
@@ -29,8 +27,8 @@ public class BulkTest extends BaseTest {
                 "https://bulk.openweathermap.org/archive/{BULK_FILE_NAME}?appid={API key}";
 
         BulkPage bulkPage = openBaseURL()
-                .scrollToBulkLink()
-                .clickBulks();
+                .scrollToPreparedBulksLink()
+                .clickPreparedBulks();
 
         String actualCurrentAndForecastBulkRequest = bulkPage.getBulkFilesRequests().get(0);
         String actualSevenDaysArchiveBulkRequest = bulkPage.getBulkFilesRequests().get(1);

@@ -16,7 +16,7 @@ public abstract class BaseMainBreadcrumbsPage extends BasePage {
     }
 
     public Breadcrumbs getBreadcrumbs() {
-        return new Breadcrumbs<>(getDriver());
+        return new Breadcrumbs(getDriver());
     }
 
     public FooterMenu getFooterMenu() {

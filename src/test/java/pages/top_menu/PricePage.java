@@ -21,7 +21,7 @@ public class PricePage extends BaseMainBreadcrumbsPage {
     @FindBy(xpath = "//section[@id='alerts']//h4[text()='By request']")
     private List<WebElement> alertsPriceByRequest;
 
-    @FindBy(id = "solar_radiation")
+    @FindBy(xpath = "//a[@href='/api/solar-radiation']")
     private WebElement alertPriceSolarRadiationAPIText;
 
     @FindBy(xpath = "//section[@id='current']//table/thead//h3/b")
@@ -35,11 +35,6 @@ public class PricePage extends BaseMainBreadcrumbsPage {
 
     public PricePage(WebDriver driver) {
         super(driver);
-    }
-
-    public PricePage createGeneric() {
-
-        return new PricePage(getDriver());
     }
 
     public String getAlertsH2Header() {
@@ -77,11 +72,6 @@ public class PricePage extends BaseMainBreadcrumbsPage {
         return getTrimmedTexts(detailedPricingButtons);
     }
 
-    public int getAlertsByRequestAmount() {
-
-        return getListSize(alertsPriceByRequest);
-    }
-
     public int getDetailedPricingButtonsAmount() {
 
         return getListSize(detailedPricingButtons);
@@ -90,12 +80,6 @@ public class PricePage extends BaseMainBreadcrumbsPage {
     public int getTransparentButtonsAmount() {
 
         return getListSize(transparentButtons);
-    }
-
-    public PricePage waitGetRequestToBeChanged(String oldHeader) {
-        waitTextToBeChanged(alertPriceSolarRadiationAPIText, oldHeader);
-
-        return this;
     }
 
     public PricePage waitAllElementsVisibleAndClickable() {

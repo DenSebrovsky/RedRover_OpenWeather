@@ -2,7 +2,6 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.top_menu.PricePage;
 
@@ -11,10 +10,9 @@ import java.util.List;
 
 public class PriceTest extends BaseTest {
 
-    @Ignore
     @Test
     public void testTransparentButtonsAmount() {
-        final int expectedTransparentButtons = 19;
+        final int expectedTransparentButtons = 18;
 
         int actualTransparentButtons = openBaseURL()
                 .getTopMenu()
@@ -64,12 +62,10 @@ public class PriceTest extends BaseTest {
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 
-    @Ignore
     @Test
     public void testH4HeadersOnAlertsTable() {
         final List<String> expectedH4Headers = Arrays.asList(
                 "Solar Radiation API",
-                "Solar Radiation API - Historical data",
                 "Global Weather Alerts Push notifications",
                 "Road Risk API (advanced configuration)",
                 "Global Precipitation Map - Forecast and historical data",
@@ -84,29 +80,13 @@ public class PriceTest extends BaseTest {
         Assert.assertEquals(actualH4Headers, expectedH4Headers);
     }
 
-    @Ignore
-    @Test
-    public void testAlertsPriceByRequest() {
-        final int expectedAmount = 4;
-        final String oldSubHeader = "By request";
-
-        int actualAmount = openBaseURL()
-                .getTopMenu()
-                .clickPricingMenu()
-                .waitGetRequestToBeChanged(oldSubHeader)
-                .getAlertsByRequestAmount();
-
-        Assert.assertEquals(actualAmount, expectedAmount);
-    }
-
-    @Ignore
     @Test
     public void testTransparentButtonsLabels() {
         final List<String> expectedTransparentButtonsLabels = Arrays.asList(
-                "Get API key", "Subscribe", "Subscribe", "Subscribe",
-                "Subscribe", "Get access", "Get access", "Get access", "Get access", "Get access",
-                "Get access", "Get", "Get", "Subscribe", "Subscribe", "Get", "Get access",
-                "Get access", "Learn more");
+                "Get API key", "Subscribe", "Subscribe", "Subscribe", "Subscribe",
+                "Get access", "Get access", "Get access", "Get access", "Get access",
+                "Get", "Get", "Subscribe", "Subscribe", "Get",
+                "Get access", "Get access", "Learn more");
 
         List<String> actualTransparentButtonsLabels = openBaseURL()
                 .getTopMenu()

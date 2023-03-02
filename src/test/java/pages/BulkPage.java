@@ -10,8 +10,8 @@ import java.util.List;
 
 public class BulkPage extends BaseMainPage {
 
-    @FindBy(xpath = "//section[@id='how']/h2")
-    private WebElement h2Header;
+    @FindBy(xpath = "//section[@id='how']/h1")
+    private WebElement h1Header;
 
     @FindBy(xpath = "//div[@class='api']/*")
     private List<WebElement> bulkFilesRequests;
@@ -26,9 +26,9 @@ public class BulkPage extends BaseMainPage {
         return new BulkPage(getDriver());
     }
 
-    public String getH2Header() {
+    public String getH1Header() {
 
-        return getText(h2Header);
+        return getText(h1Header);
     }
 
     public List<String> getBulkFilesRequests() {
